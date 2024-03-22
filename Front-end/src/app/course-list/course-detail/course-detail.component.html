@@ -1,0 +1,15 @@
+<div *ngIf="course | async as courseData">
+    <div class="grid grid-rows-[auto,1fr] py-4 gap-3">
+        <div class="grid grid-cols-3 gap-7">
+            <div class="col-span-2">
+                <app-curse-detail-item [courseData]="courseData"></app-curse-detail-item>
+            </div>
+            <div>
+                <app-application-form [isDetail]="true" [courseInput]="courseData"></app-application-form>
+            </div>
+        </div>
+        <div>
+            <app-course-detail-accordion [courseData]="courseData"></app-course-detail-accordion>
+        </div>
+    </div>
+</div>

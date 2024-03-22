@@ -1,0 +1,11 @@
+<div class="p-3 grid grid-rows-[auto,1fr] gap-3">
+    <h2 class="text-3xl text-center font-bold">Kursevi</h2>
+    <div class="grid grid-cols-4 gap-x-9">
+        <div class="col-span-3 grid grid-cols-3 gap-x-7 gap-y-3">
+            <app-course-item *ngFor="let course of courses | async" [course]="course"></app-course-item>
+        </div>
+        <div>
+            <app-course-filtering></app-course-filtering>
+        </div>
+    </div>
+</div>

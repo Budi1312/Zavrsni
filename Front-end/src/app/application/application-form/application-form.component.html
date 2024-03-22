@@ -1,0 +1,91 @@
+<div class="p-4">
+    <div class="border border-black rounded-2xl p-3">
+        <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
+            
+            <div *ngIf="!isDetail" class="flex flex-col">
+                <label for="course">Kurs</label>
+                <select 
+                    id="course"
+                    class="border-2 p-2 rounded-md"
+                    formControlName="course"
+                    required
+                    autocomplete="off">
+                    <option *ngFor="let course of courses | async" [ngValue]="course">
+                        {{course.name}}
+                    </option>
+                </select>
+            </div>
+
+            <div *ngIf="isDetail" class="flex flex-col">
+                <label for="course">Kurs</label>
+                <select 
+                    id="course"
+                    class="border-2 p-2 rounded-md"
+                    formControlName="course"
+                    required
+                    autocomplete="off">
+                    <option [ngValue]="courseInput">
+                        {{courseInput.name}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="name" class="text-lg">Ime i prezime</label>
+                <input 
+                    class="border-2 p-2 rounded-md" 
+                    type="text" 
+                    id="name" 
+                    formControlName="name" 
+                    required 
+                    autocomplete="off">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="eMail" class="text-lg">E-mail</label>
+                <input 
+                    class=" border-2 p-2 rounded-md" 
+                    type="email" 
+                    id="eMail" 
+                    formControlName="eMail" 
+                    required 
+                    autocomplete="off">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="tel" class="text-lg">Telefon</label>
+                <input 
+                    class="border-2 p-2 rounded-md" 
+                    type="tel" 
+                    id="tel" 
+                    formControlName="tel" 
+                    required 
+                    autocomplete="off">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="address" class="text-lg">Adresa</label>
+                <input 
+                    class="border-2 p-2 rounded-md" 
+                    type="text" 
+                    id="address" 
+                    formControlName="address" 
+                    required 
+                    autocomplete="off">
+            </div>
+
+            <div class="flex">
+                <button 
+                    class="text-white px-5 py-2 rounded-md bg-blue-500" 
+                    type="submit"
+                    [disabled]="!courseForm.valid"
+                    [ngStyle]="{'background-color':  !courseForm.valid ? '#93C5FD' : '#3B82F6' }">
+                    Prijavi me
+                </button>
+            </div>
+        </form>
+        <p *ngIf="applicationError !== ''" class="text-center p-2 text-red-500">
+            {{applicationError}}
+        </p>
+    </div>
+</div>
